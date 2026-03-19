@@ -1,0 +1,85 @@
+# Taskbolt - Cloud Build configuration for Cloud Run deployment
+# This file configures automated CI/CD from GitHub to Cloud Run
+
+substitutions:
+  _REGION: us-central1
+  _SERVICE_NAME: taskbolt
+  _INSTANCE_NAME: taskbolt-db
+
+steps:
+  # Step 1: Build the container image
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '-t'
+      - '${_REGION}-docker.pkg.dev/${PROJECT_ID}/taskbolt-repo/${_SERVICE_NAME}:${SHORT_SHA}'
+      - '-t'
+      - '${_REGION}-docker.pkg.dev/${PROJECT_ID}/taskbolt-repo/${_SERVICE_NAME}:latest'
+      - '-f'
+      - 'deploy/Dockerfile.cloudrun'
+      - '.'
+    timeout: '600s'
+
+  # Step 2: Push the container image to Artifact Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'push'
+      - '--all-tags'
+      - '${_REGION}-docker.pkg.dev/${PROJECT_ID}/taskbolt-repo/${_SERVICE_NAME}'
+
+  # Step 3: Get secrets from Secret Manager
+  - name: 'gcr.io/cloud-builders/gcloud'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        gcloud secrets versions access latest --secret=db-password --project=${PROJECT_ID} > /tmp/db-password.txt
+        gcloud secrets versions access latest --secret=firebase-config --project=${PROJECT_ID} > /tmp/firebase-config.json
+
+  # Step 4: Deploy to Cloud Run
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      - 'run'
+      - 'deploy'
+      - '${_SERVICE_NAME}'
+      - '--image'
+      - '${_REGION}-docker.pkg.dev/${PROJECT_ID}/taskbolt-repo/${_SERVICE_NAME}:${SHORT_SHA}'
+      - '--region'
+      - '${_REGION}'
+      - '--platform'
+      - 'managed'
+      - '--allow-unauthenticated'
+      - '--port'
+      - '8080'
+      - '--memory'
+      - '2Gi'
+      - '--cpu'
+      - '2'
+      - '--min-instances'
+      - '0'
+      - '--max-instances'
+      - '10'
+      - '--set-env-vars'
+      - 'DATABASE_URL=postgresql://taskbolt:$(cat /tmp/db-password.txt)@/taskbolt?host=/cloudsql/${PROJECT_ID}:${_REGION}:${_INSTANCE_NAME}'
+      - '--add-cloudsql-instances'
+      - '${PROJECT_ID}:${_REGION}:${_INSTANCE_NAME}'
+      - '--set-secrets'
+      - 'FIREBASE_CONFIG=firebase-config:latest'
+
+  # Step 5: Cleanup sensitive files
+  - name: 'gcr.io/cloud-builders/gcloud'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - 'rm -f /tmp/db-password.txt /tmp/firebase-config.json'
+
+# Store images in Artifact Registry
+images:
+  - '${_REGION}-docker.pkg.dev/${PROJECT_ID}/taskbolt-repo/${_SERVICE_NAME}:${SHORT_SHA}'
+  - '${_REGION}-docker.pkg.dev/${PROJECT_ID}/taskbolt-repo/${_SERVICE_NAME}:latest'
+
+# Build timeout
+timeout: '1200s'
+
+# Service account for Cloud Build
+serviceAccount: 'projects/${PROJECT_ID}/serviceAccounts/taskbolt-deployer@${PROJECT_ID}.iam.gserviceaccount.com'
