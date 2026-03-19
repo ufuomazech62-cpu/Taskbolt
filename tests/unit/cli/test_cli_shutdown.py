@@ -3,9 +3,9 @@ from __future__ import annotations
 
 from click.testing import CliRunner
 
-from copaw.cli.main import cli
-from copaw.cli import shutdown_cmd as shutdown_cmd_module
-from copaw.cli.shutdown_cmd import (
+from taskbolt.cli.main import cli
+from taskbolt.cli import shutdown_cmd as shutdown_cmd_module
+from taskbolt.cli.shutdown_cmd import (
     _find_windows_wrapper_ancestor_pids,
     _terminate_pid,
 )

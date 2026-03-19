@@ -7,11 +7,11 @@ from types import SimpleNamespace
 
 import pytest
 
-import copaw.providers.provider_manager as provider_manager_module
-from copaw.providers.anthropic_provider import AnthropicProvider
-from copaw.providers.openai_provider import OpenAIProvider
-from copaw.providers.provider import DefaultProvider, ModelInfo
-from copaw.providers.provider_manager import ProviderManager
+import taskbolt.providers.provider_manager as provider_manager_module
+from taskbolt.providers.anthropic_provider import AnthropicProvider
+from taskbolt.providers.openai_provider import OpenAIProvider
+from taskbolt.providers.provider import DefaultProvider, ModelInfo
+from taskbolt.providers.provider_manager import ProviderManager
 
 
 LEGACY_PROVIDER = {

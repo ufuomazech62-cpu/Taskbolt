@@ -9,9 +9,9 @@ import httpx
 import pytest
 from click.testing import CliRunner
 
-from copaw.__version__ import __version__
-from copaw.cli.main import cli
-from copaw.cli.update_cmd import (
+from taskbolt.__version__ import __version__
+from taskbolt.cli.main import cli
+from taskbolt.cli.update_cmd import (
     InstallInfo,
     RunningServiceInfo,
     _detect_running_service,
@@ -129,7 +129,7 @@ def test_detect_installation(
     expected_source_type: str,
     expected_source_url: str | None,
 ) -> None:
-    from copaw.cli import update_cmd as update_cmd_module
+    from taskbolt.cli import update_cmd as update_cmd_module
 
     class _FakeDistribution:
         def read_text(self, name: str) -> str | None:
@@ -170,7 +170,7 @@ def test_detect_installation(
 
 
 def test_update_reports_up_to_date(monkeypatch) -> None:
-    from copaw.cli import update_cmd as update_cmd_module
+    from taskbolt.cli import update_cmd as update_cmd_module
 
     install_info = _install_info()
 
@@ -234,7 +234,7 @@ def test_probe_service_returns_not_running_on_http_error(monkeypatch) -> None:
 
 
 def test_detect_running_service_handles_wildcard_host(monkeypatch) -> None:
-    from copaw.cli import update_cmd as update_cmd_module
+    from taskbolt.cli import update_cmd as update_cmd_module
 
     monkeypatch.setattr(update_cmd_module, "read_last_api", lambda: None)
     monkeypatch.setattr(
@@ -260,7 +260,7 @@ def test_detect_running_service_handles_wildcard_host(monkeypatch) -> None:
 def test_detect_running_service_falls_back_to_process_ports(
     monkeypatch,
 ) -> None:
-    from copaw.cli import update_cmd as update_cmd_module
+    from taskbolt.cli import update_cmd as update_cmd_module
 
     monkeypatch.setattr(update_cmd_module, "read_last_api", lambda: None)
     monkeypatch.setattr(
@@ -284,7 +284,7 @@ def test_detect_running_service_falls_back_to_process_ports(
 
 
 def test_update_blocks_running_service(monkeypatch) -> None:
-    from copaw.cli import update_cmd as update_cmd_module
+    from taskbolt.cli import update_cmd as update_cmd_module
 
     install_info = _install_info()
 
@@ -324,7 +324,7 @@ def test_update_blocks_running_service(monkeypatch) -> None:
 
 
 def test_update_can_cancel_forced_shutdown(monkeypatch) -> None:
-    from copaw.cli import update_cmd as update_cmd_module
+    from taskbolt.cli import update_cmd as update_cmd_module
 
     install_info = _install_info()
 
@@ -366,7 +366,7 @@ def test_update_can_force_shutdown_running_service(
     monkeypatch,
     tmp_path: Path,
 ) -> None:
-    from copaw.cli import update_cmd as update_cmd_module
+    from taskbolt.cli import update_cmd as update_cmd_module
 
     install_info = _install_info()
     spawned: dict[str, object] = {}
@@ -446,7 +446,7 @@ def test_update_can_force_shutdown_running_service(
 
 
 def test_update_can_cancel_non_pypi_override(monkeypatch) -> None:
-    from copaw.cli import update_cmd as update_cmd_module
+    from taskbolt.cli import update_cmd as update_cmd_module
 
     install_info = _install_info(source_type="editable")
 
@@ -479,7 +479,7 @@ def test_update_can_override_non_pypi_install_with_yes(
     monkeypatch,
     tmp_path: Path,
 ) -> None:
-    from copaw.cli import update_cmd as update_cmd_module
+    from taskbolt.cli import update_cmd as update_cmd_module
 
     spawned: dict[str, object] = {}
     install_info = _install_info(source_type="editable")
@@ -535,7 +535,7 @@ def test_update_can_override_non_pypi_install_with_yes(
 
 
 def test_update_spawns_worker(monkeypatch, tmp_path: Path) -> None:
-    from copaw.cli import update_cmd as update_cmd_module
+    from taskbolt.cli import update_cmd as update_cmd_module
 
     spawned: dict[str, object] = {}
     install_info = _install_info()
@@ -602,7 +602,7 @@ def test_update_spawns_worker(monkeypatch, tmp_path: Path) -> None:
 def test_update_prompts_when_version_is_not_comparable(
     monkeypatch,
 ) -> None:
-    from copaw.cli import update_cmd as update_cmd_module
+    from taskbolt.cli import update_cmd as update_cmd_module
 
     install_info = _install_info()
 
@@ -634,7 +634,7 @@ def test_update_can_continue_when_version_is_not_comparable(
     monkeypatch,
     tmp_path: Path,
 ) -> None:
-    from copaw.cli import update_cmd as update_cmd_module
+    from taskbolt.cli import update_cmd as update_cmd_module
 
     spawned: dict[str, object] = {}
     install_info = _install_info()
@@ -689,7 +689,7 @@ def test_update_can_continue_when_version_is_not_comparable(
 
 
 def test_update_returns_worker_exit_code(monkeypatch, tmp_path: Path) -> None:
-    from copaw.cli import update_cmd as update_cmd_module
+    from taskbolt.cli import update_cmd as update_cmd_module
 
     install_info = _install_info()
 
@@ -726,7 +726,7 @@ def test_update_detaches_worker_on_windows(
     monkeypatch,
     tmp_path: Path,
 ) -> None:
-    from copaw.cli import update_cmd as update_cmd_module
+    from taskbolt.cli import update_cmd as update_cmd_module
 
     install_info = _install_info()
     spawned: dict[str, object] = {}

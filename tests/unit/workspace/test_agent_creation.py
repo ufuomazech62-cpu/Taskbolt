@@ -2,7 +2,7 @@
 """Tests for agent creation with short UUID."""
 from unittest.mock import patch
 
-from copaw.config.config import (
+from taskbolt.config.config import (
     AgentProfileConfig,
     generate_short_agent_id,
 )

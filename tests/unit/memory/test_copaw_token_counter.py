@@ -13,8 +13,8 @@ import asyncio
 import os
 from unittest.mock import MagicMock
 
-import copaw.agents.utils.copaw_token_counter as token_counter_module
-from copaw.agents.utils.copaw_token_counter import (
+import taskbolt.agents.utils.copaw_token_counter as token_counter_module
+from taskbolt.agents.utils.copaw_token_counter import (
     CopawTokenCounter,
     get_copaw_token_counter,
 )

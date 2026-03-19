@@ -4,20 +4,20 @@ from pathlib import Path
 
 import pytest
 
-from copaw.config.config import (
+from taskbolt.config.config import (
     AgentProfileConfig,
     load_agent_config,
     save_agent_config,
 )
-from copaw.providers.models import ModelSlotConfig
+from taskbolt.providers.models import ModelSlotConfig
 
 
 @pytest.fixture
 def mock_agent_workspace(tmp_path, monkeypatch):
     """Create a temporary agent workspace for testing."""
     import json
-    from copaw.config.utils import get_config_path
-    from copaw.config.config import Config, AgentsConfig, AgentProfileRef
+    from taskbolt.config.utils import get_config_path
+    from taskbolt.config.config import Config, AgentsConfig, AgentProfileRef
 
     # Setup workspace directory
     workspace_dir = tmp_path / "workspaces" / "test_agent"
@@ -139,12 +139,12 @@ def test_different_agents_have_independent_models(tmp_path, monkeypatch):
 
     # Create two agents
     import json
-    from copaw.config.config import (
+    from taskbolt.config.config import (
         Config,
         AgentsConfig,
         AgentProfileRef,
     )
-    from copaw.config.utils import get_config_path
+    from taskbolt.config.utils import get_config_path
 
     agent1_dir = tmp_path / "workspaces" / "agent1"
     agent2_dir = tmp_path / "workspaces" / "agent2"

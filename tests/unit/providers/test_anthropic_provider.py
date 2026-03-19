@@ -3,8 +3,8 @@ from __future__ import annotations
 
 from types import SimpleNamespace
 
-import copaw.providers.anthropic_provider as anthropic_provider_module
-from copaw.providers.anthropic_provider import AnthropicProvider
+import taskbolt.providers.anthropic_provider as anthropic_provider_module
+from taskbolt.providers.anthropic_provider import AnthropicProvider
 
 
 def _make_provider(is_custom: bool = False) -> AnthropicProvider:

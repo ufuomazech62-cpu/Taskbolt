@@ -6,7 +6,7 @@ from types import SimpleNamespace
 
 from google.genai import errors as genai_errors
 
-from copaw.providers.gemini_provider import GeminiProvider
+from taskbolt.providers.gemini_provider import GeminiProvider
 
 
 def _make_provider() -> GeminiProvider:

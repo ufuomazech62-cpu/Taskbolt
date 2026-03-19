@@ -1,25 +1,25 @@
 <div align="center">
 
-# CoPaw
+# Taskbolt
 
-[![GitHub Repo](https://img.shields.io/badge/GitHub-Repo-black.svg?logo=github)](https://github.com/agentscope-ai/CoPaw)
-[![PyPI](https://img.shields.io/pypi/v/copaw?color=3775A9&label=PyPI&logo=pypi)](https://pypi.org/project/copaw/)
-[![Documentation](https://img.shields.io/badge/Docs-Website-green.svg?logo=readthedocs&label=Docs)](https://copaw.agentscope.io/)
+[![GitHub Repo](https://img.shields.io/badge/GitHub-Repo-black.svg?logo=github)](https://github.com/agentscope-ai/Taskbolt)
+[![PyPI](https://img.shields.io/pypi/v/taskbolt?color=3775A9&label=PyPI&logo=pypi)](https://pypi.org/project/taskbolt/)
+[![Documentation](https://img.shields.io/badge/Docs-Website-green.svg?logo=readthedocs&label=Docs)](https://taskbolt.agentscope.io/)
 [![Python Version](https://img.shields.io/badge/python-3.10%20~%20%3C3.14-blue.svg?logo=python&label=Python)](https://www.python.org/downloads/)
-[![Last Commit](https://img.shields.io/github/last-commit/agentscope-ai/CoPaw)](https://github.com/agentscope-ai/CoPaw)
+[![Last Commit](https://img.shields.io/github/last-commit/agentscope-ai/Taskbolt)](https://github.com/agentscope-ai/Taskbolt)
 [![License](https://img.shields.io/badge/license-Apache%202.0-red.svg?logo=apache&label=License)](LICENSE)
 [![Code Style](https://img.shields.io/badge/code%20style-black-black.svg?logo=python&label=CodeStyle)](https://github.com/psf/black)
-[![GitHub Stars](https://img.shields.io/github/stars/agentscope-ai/CoPaw?style=flat&logo=github&color=yellow&label=Stars)](https://github.com/agentscope-ai/CoPaw/stargazers)
-[![GitHub Forks](https://img.shields.io/github/forks/agentscope-ai/CoPaw?style=flat&logo=github&color=purple&label=Forks)](https://github.com/agentscope-ai/CoPaw/network)
-[![DeepWiki](https://img.shields.io/badge/DeepWiki-Ask_Devin-navy.svg?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAyCAYAAAAnWDnqAAAAAXNSR0IArs4c6QAAA05JREFUaEPtmUtyEzEQhtWTQyQLHNak2AB7ZnyXZMEjXMGeK/AIi+QuHrMnbChYY7MIh8g01fJoopFb0uhhEqqcbWTp06/uv1saEDv4O3n3dV60RfP947Mm9/SQc0ICFQgzfc4CYZoTPAswgSJCCUJUnAAoRHOAUOcATwbmVLWdGoH//PB8mnKqScAhsD0kYP3j/Yt5LPQe2KvcXmGvRHcDnpxfL2zOYJ1mFwrryWTz0advv1Ut4CJgf5uhDuDj5eUcAUoahrdY/56ebRWeraTjMt/00Sh3UDtjgHtQNHwcRGOC98BJEAEymycmYcWwOprTgcB6VZ5JK5TAJ+fXGLBm3FDAmn6oPPjR4rKCAoJCal2eAiQp2x0vxTPB3ALO2CRkwmDy5WohzBDwSEFKRwPbknEggCPB/imwrycgxX2NzoMCHhPkDwqYMr9tRcP5qNrMZHkVnOjRMWwLCcr8ohBVb1OMjxLwGCvjTikrsBOiA6fNyCrm8V1rP93iVPpwaE+gO0SsWmPiXB+jikdf6SizrT5qKasx5j8ABbHpFTx+vFXp9EnYQmLx02h1QTTrl6eDqxLnGjporxl3NL3agEvXdT0WmEost648sQOYAeJS9Q7bfUVoMGnjo4AZdUMQku50McDcMWcBPvr0SzbTAFDfvJqwLzgxwATnCgnp4wDl6Aa+Ax283gghmj+vj7feE2KBBRMW3FzOpLOADl0Isb5587h/U4gGvkt5v60Z1VLG8BhYjbzRwyQZemwAd6cCR5/XFWLYZRIMpX39AR0tjaGGiGzLVyhse5C9RKC6ai42ppWPKiBagOvaYk8lO7DajerabOZP46Lby5wKjw1HCRx7p9sVMOWGzb/vA1hwiWc6jm3MvQDTogQkiqIhJV0nBQBTU+3okKCFDy9WwferkHjtxib7t3xIUQtHxnIwtx4mpg26/HfwVNVDb4oI9RHmx5WGelRVlrtiw43zboCLaxv46AZeB3IlTkwouebTr1y2NjSpHz68WNFjHvupy3q8TFn3Hos2IAk4Ju5dCo8B3wP7VPr/FGaKiG+T+v+TQqIrOqMTL1VdWV1DdmcbO8KXBz6esmYWYKPwDL5b5FA1a0hwapHiom0r/cKaoqr+27/XcrS5UwSMbQAAAABJRU5ErkJggg==)](https://deepwiki.com/agentscope-ai/CoPaw)
+[![GitHub Stars](https://img.shields.io/github/stars/agentscope-ai/Taskbolt?style=flat&logo=github&color=yellow&label=Stars)](https://github.com/agentscope-ai/Taskbolt/stargazers)
+[![GitHub Forks](https://img.shields.io/github/forks/agentscope-ai/Taskbolt?style=flat&logo=github&color=purple&label=Forks)](https://github.com/agentscope-ai/Taskbolt/network)
+[![DeepWiki](https://img.shields.io/badge/DeepWiki-Ask_Devin-navy.svg?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAyCAYAAAAnWDnqAAAAAXNSR0IArs4c6QAAA05JREFUaEPtmUtyEzEQhtWTQyQLHNak2AB7ZnyXZMEjXMGeK/AIi+QuHrMnbChYY7MIh8g01fJoopFb0uhhEqqcbWTp06/uv1saEDv4O3n3dV60RfP947Mm9/SQc0ICFQgzfc4CYZoTPAswgSJCCUJUnAAoRHOAUOcATwbmVLWdGoH//PB8mnKqScAhsD0kYP3j/Yt5LPQe2KvcXmGvRHcDnpxfL2zOYJ1mFwrryWTz0advv1Ut4CJgf5uhDuDj5eUcAUoahrdY/56ebRWeraTjMt/00Sh3UDtjgHtQNHwcRGOC98BJEAEymycmYcWwOprTgcB6VZ5JK5TAJ+fXGLBm3FDAmn6oPPjR4rKCAoJCal2eAiQp2x0vxTPB3ALO2CRkwmDy5WohzBDwSEFKRwPbknEggCPB/imwrycgxX2NzoMCHhPkDwqYMr9tRcP5qNrMZHkVnOjRMWwLCcr8ohBVb1OMjxLwGCvjTikrsBOiA6fNyCrm8V1rP93iVPpwaE+gO0SsWmPiXB+jikdf6SizrT5qKasx5j8ABbHpFTx+vFXp9EnYQmLx02h1QTTrl6eDqxLnGjporxl3NL3agEvXdT0WmEost648sQOYAeJS9Q7bfUVoMGnjo4AZdUMQku50McDcMWcBPvr0SzbTAFDfvJqwLzgxwATnCgnp4wDl6Aa+Ax283gghmj+vj7feE2KBBRMW3FzOpLOADl0Isb5587h/U4gGvkt5v60Z1VLG8BhYjbzRwyQZemwAd6cCR5/XFWLYZRIMpX39AR0tjaGGiGzLVyhse5C9RKC6ai42ppWPKiBagOvaYk8lO7DajerabOZP46Lby5wKjw1HCRx7p9sVMOWGzb/vA1hwiWc6jm3MvQDTogQkiqIhJV0nBQBTU+3okKCFDy9WwferkHjtxib7t3xIUQtHxnIwtx4mpg26/HfwVNVDb4oI9RHmx5WGelRVlrtiw43zboCLaxv46AZeB3IlTkwouebTr1y2NjSpHz68WNFjHvupy3q8TFn3Hos2IAk4Ju5dCo8B3wP7VPr/FGaKiG+T+v+TQqIrOqMTL1VdWV1DdmcbO8KXBz6esmYWYKPwDL5b5FA1a0hwapHiom0r/cKaoqr+27/XcrS5UwSMbQAAAABJRU5ErkJggg==)](https://deepwiki.com/agentscope-ai/Taskbolt)
 [![Discord](https://img.shields.io/badge/Discord-Join_Us-blueviolet.svg?logo=discord)](https://discord.gg/eYMpfnkG8h)
 [![X](https://img.shields.io/badge/X-Follow_Us-black.svg?logo=x)](https://x.com/agentscope_ai)
 [![DingTalk](https://img.shields.io/badge/DingTalk-Join_Us-orange.svg)](https://qr.dingtalk.com/action/joingroup?code=v1,k1,OmDlBXpjW+I2vWjKDsjvI9dhcXjGZi3bQiojOq3dlDw=&_dt_no_comment=1&origin=11)
 
-[[Documentation](https://copaw.agentscope.io/)] [[中文 README](README_zh.md)] [[日本語](README_ja.md)]
+[[Documentation](https://taskbolt.agentscope.io/)] [[中文 README](README_zh.md)] [[日本語](README_ja.md)]
 
 <p align="center">
-  <img src="https://img.alicdn.com/imgextra/i2/O1CN014TIqyO1U5wDiSbFfA_!!6000000002467-2-tps-816-192.png" alt="CoPaw Logo" width="120">
+  <img src="https://img.alicdn.com/imgextra/i2/O1CN014TIqyO1U5wDiSbFfA_!!6000000002467-2-tps-816-192.png" alt="Taskbolt Logo" width="120">
 </p>
 
 <p align="center"><b>Works for you, grows with you.</b></p>
@@ -54,20 +54,20 @@ Your Personal AI Assistant; easy to install, deploy on your own machine or on th
 
 ## News
 
-[2026-03-18] We released v0.1.0! See the [v0.1.0 Release Notes](https://agentscope-ai.github.io/CoPaw/release-notes) for the full changelog.
+[2026-03-18] We released v0.1.0! See the [v0.1.0 Release Notes](https://agentscope-ai.github.io/Taskbolt/release-notes) for the full changelog.
 
-- **[v0.1.0] Added:** Multi-workspace architecture with agent selector; skill security scanner and destructive shell command detection; optional web authentication; WeCom and XiaoYi channels; DingTalk AI Card replies; Gemini, DeepSeek, MiniMax, and Kimi providers; console dark mode and multimodal chat; SSE-based chat streaming with reconnect; voice message transcription via Whisper; `view_image` tool for multimodal conversations; LobeHub, ModelScope, and zip archive skill import; `glob_search` and `grep_search` built-in tools; timezone selector; `copaw update` CLI.
+- **[v0.1.0] Added:** Multi-workspace architecture with agent selector; skill security scanner and destructive shell command detection; optional web authentication; WeCom and XiaoYi channels; DingTalk AI Card replies; Gemini, DeepSeek, MiniMax, and Kimi providers; console dark mode and multimodal chat; SSE-based chat streaming with reconnect; voice message transcription via Whisper; `view_image` tool for multimodal conversations; LobeHub, ModelScope, and zip archive skill import; `glob_search` and `grep_search` built-in tools; timezone selector; `taskbolt update` CLI.
 - **[v0.1.0] Improved:** Graceful lifecycle management with zero-downtime agent reload; dynamic per-agent token counting; config loading protection; console internationalization with localized chat prompts; Windows desktop startup speed via bytecode pre-compilation; QQ channel reply logic with DM support.
 - **[v0.1.0] Fixed:** Telegram thread replies, media handling, and auto-reconnect; Discord cross-channel message merging and debounce generalization; Feishu channel reload; Ollama/LM Studio context length and error messages; cron jobs in correct workspace; Windows cross-disk moves, AutoRun stderr, and GBK encoding.
 - **[v0.1.0] Contributors:** Thanks to new contributors: [@dipeshbabu](https://github.com/dipeshbabu), [@sljeff](https://github.com/sljeff), [@octo-patch](https://github.com/octo-patch), [@Alexxigang](https://github.com/Alexxigang), [@howyoungchen](https://github.com/howyoungchen), [@nphenix](https://github.com/nphenix), [@skyfaker](https://github.com/skyfaker), [@hh0592821](https://github.com/hh0592821), [@futuremeng](https://github.com/futuremeng), [@toby1123yjh](https://github.com/toby1123yjh), [@hiyuchang](https://github.com/hiyuchang), [@hanson-hex](https://github.com/hanson-hex), [@JackyMao1999](https://github.com/JackyMao1999), [@mvanhorn](https://github.com/mvanhorn), [@yuanxs21](https://github.com/yuanxs21), [@aissac](https://github.com/aissac), [@lcq225](https://github.com/lcq225), [@Justin-lu](https://github.com/Justin-lu), [@rowanchen-com](https://github.com/rowanchen-com), [@pzlav](https://github.com/pzlav), [@mautops](https://github.com/mautops), [@hikariming](https://github.com/hikariming), [@Vanlee0129](https://github.com/Vanlee0129), [@JiwaniZakir](https://github.com/JiwaniZakir), [@EuanTop](https://github.com/EuanTop).
 
-[2026-03-12] We released v0.0.7! See the [v0.0.7 Release Notes](https://agentscope-ai.github.io/CoPaw/release-notes) for the full changelog.
+[2026-03-12] We released v0.0.7! See the [v0.0.7 Release Notes](https://agentscope-ai.github.io/Taskbolt/release-notes) for the full changelog.
 
-[2026-03-09] We released v0.0.6! See the [v0.0.6 Release Notes](https://agentscope-ai.github.io/CoPaw/release-notes) for the full changelog.
+[2026-03-09] We released v0.0.6! See the [v0.0.6 Release Notes](https://agentscope-ai.github.io/Taskbolt/release-notes) for the full changelog.
 
-[2026-03-06] We released v0.0.5! See the [v0.0.5 Release Notes](https://agentscope-ai.github.io/CoPaw/release-notes) for the full changelog.
+[2026-03-06] We released v0.0.5! See the [v0.0.5 Release Notes](https://agentscope-ai.github.io/Taskbolt/release-notes) for the full changelog.
 
-[2026-03-02] We released v0.0.4! See the [v0.0.4 Release Notes](https://agentscope-ai.github.io/CoPaw/release-notes) for the full changelog.
+[2026-03-02] We released v0.0.4! See the [v0.0.4 Release Notes](https://agentscope-ai.github.io/Taskbolt/release-notes) for the full changelog.
 
 ---
 
@@ -75,9 +75,9 @@ Your Personal AI Assistant; easy to install, deploy on your own machine or on th
 
 > **Recommended reading:**
 >
-> - **I want to run CoPaw in 3 commands**: [Quick Start](#quick-start) → open Console in browser.
-> - **I want to chat in DingTalk / Feishu / QQ**: Configure [channels](https://copaw.agentscope.io/docs/channels) in the Console.
-> - **I don’t want to install Python**: [Script install](#script-install) handles Python automatically, or use [ModelScope one-click](https://modelscope.cn/studios/fork?target=AgentScope/CoPaw) for cloud deployment.
+> - **I want to run Taskbolt in 3 commands**: [Quick Start](#quick-start) → open Console in browser.
+> - **I want to chat in DingTalk / Feishu / QQ**: Configure [channels](https://taskbolt.agentscope.io/docs/channels) in the Console.
+> - **I don’t want to install Python**: [Script install](#script-install) handles Python automatically, or use [ModelScope one-click](https://modelscope.cn/studios/fork?target=AgentScope/Taskbolt) for cloud deployment.
 
 - [News](#news)
 - [Quick Start](#quick-start)
@@ -88,7 +88,7 @@ Your Personal AI Assistant; easy to install, deploy on your own machine or on th
 - [Roadmap](#roadmap)
 - [Contributing](#get-involved)
 - [Install from source](#install-from-source)
-- [Why CoPaw?](#why-copaw)
+- [Why Taskbolt?](#why-taskbolt)
 - [Built by](#built-by)
 - [License](#license)
 
@@ -101,47 +101,47 @@ Your Personal AI Assistant; easy to install, deploy on your own machine or on th
 If you prefer managing Python yourself:
 
 ```bash
-pip install copaw
-copaw init --defaults
-copaw app
+pip install taskbolt
+taskbolt init --defaults
+taskbolt app
 ```
 
-Then open **http://127.0.0.1:8088/** in your browser for the Console (chat with CoPaw, configure the agent). To talk in DingTalk, Feishu, QQ, etc., add a channel in the [docs](https://copaw.agentscope.io/docs/channels).
+Then open **http://127.0.0.1:8088/** in your browser for the Console (chat with Taskbolt, configure the agent). To talk in DingTalk, Feishu, QQ, etc., add a channel in the [docs](https://taskbolt.agentscope.io/docs/channels).
 
 ![Console](https://img.alicdn.com/imgextra/i3/O1CN01VYsFVo23aAvIM3GXB_!!6000000007271-2-tps-3328-1860.png)
 
 ### Script install
 
-No Python setup required, one command installs everything. The script will automatically download uv (Python package manager), create a virtual environment, and install CoPaw with all dependencies (including Node.js and frontend assets). Note: May not work in restricted network environments or corporate firewalls.
+No Python setup required, one command installs everything. The script will automatically download uv (Python package manager), create a virtual environment, and install Taskbolt with all dependencies (including Node.js and frontend assets). Note: May not work in restricted network environments or corporate firewalls.
 
 **macOS / Linux:**
 
 ```bash
-curl -fsSL https://copaw.agentscope.io/install.sh | bash
+curl -fsSL https://taskbolt.agentscope.io/install.sh | bash
 ```
 
 To install with Ollama support:
 
 ```bash
-curl -fsSL https://copaw.agentscope.io/install.sh | bash -s -- --extras ollama
+curl -fsSL https://taskbolt.agentscope.io/install.sh | bash -s -- --extras ollama
 ```
 
 To install with multiple extras (e.g., Ollama + llama.cpp):
 
 ```bash
-curl -fsSL https://copaw.agentscope.io/install.sh | bash -s -- --extras ollama,llamacpp
+curl -fsSL https://taskbolt.agentscope.io/install.sh | bash -s -- --extras ollama,llamacpp
 ```
 
 **Windows (CMD):**
 
 ```CMD
-curl -fsSL https://copaw.agentscope.io/install.bat -o install.bat && install.bat
+curl -fsSL https://taskbolt.agentscope.io/install.bat -o install.bat && install.bat
 ```
 
 **Windows (PowerShell):**
 
 ```powershell
-irm https://copaw.agentscope.io/install.ps1 | iex
+irm https://taskbolt.agentscope.io/install.ps1 | iex
 ```
 
 > **Note**: The installer will automatically check the status of uv. If it is not installed, it will attempt to download and configure it automatically. If the automatic installation fails, please follow the on-screen prompts or execute `python -m pip install -U uv`, then rerun the installer.
@@ -153,9 +153,9 @@ irm https://copaw.agentscope.io/install.ps1 | iex
 >
 >    The script completes file installation. Due to **Constrained Language Mode**, it cannot automatically update environment variables. Manually configure as follows:
 >    - **Locate the installation directory**:
->      - Check if `uv` is available: Enter `uv --version` in CMD. If a version number appears, **only configure the CoPaw path**. If you receive the prompt `'uv' is not recognized as an internal or external command, operable program or batch file,` configure both paths.
+>      - Check if `uv` is available: Enter `uv --version` in CMD. If a version number appears, **only configure the Taskbolt path**. If you receive the prompt `'uv' is not recognized as an internal or external command, operable program or batch file,` configure both paths.
 >      - uv path (choose one based on installation location; use if `uv` fails): Typically `%USERPROFILE%\.local\bin`, `%USERPROFILE%\AppData\Local\uv`, or the `Scripts` folder within your Python installation directory
->      - CoPaw path: Typically located at `%USERPROFILE%\.copaw\bin`.
+>      - Taskbolt path: Typically located at `%USERPROFILE%\.taskbolt\bin`.
 >    - **Manually add to the system's Path environment variable**:
 >      - Press `Win + R`, type `sysdm.cpl` and press Enter to open System Properties.
 >      - Click “Advanced” -> “Environment Variables”.
@@ -165,15 +165,15 @@ irm https://copaw.agentscope.io/install.ps1 | iex
 >
 >   Due to **Constrained Language Mode**, the script may fail to automatically download `uv`.
 >   - **Manually install uv**: Refer to the [GitHub Release](https://github.com/astral-sh/uv/releases) to download `uv.exe` and place it in `%USERPROFILE%\.local\bin` or `%USERPROFILE%\AppData\Local\uv`; or ensure Python is installed and run `python -m pip install -U uv`.
->   - **Configure `uv` environment variables**: Add the `uv` directory and `%USERPROFILE%\.copaw\bin` to your system's `Path` variable.
->   - **Re-run the installation**: Open a new terminal and execute the installation script again to complete the `CoPaw` installation.
->   - **Configure the `CoPaw` environment variable**: Add `%USERPROFILE%\.copaw\bin` to your system's `Path` variable.
+>   - **Configure `uv` environment variables**: Add the `uv` directory and `%USERPROFILE%\.taskbolt\bin` to your system's `Path` variable.
+>   - **Re-run the installation**: Open a new terminal and execute the installation script again to complete the `Taskbolt` installation.
+>   - **Configure the `Taskbolt` environment variable**: Add `%USERPROFILE%\.taskbolt\bin` to your system's `Path` variable.
 
 Once installed, open a new terminal and run:
 
 ```bash
-copaw init --defaults   # or: copaw init (interactive)
-copaw app
+taskbolt init --defaults   # or: taskbolt init (interactive)
+taskbolt app
 ```
 
 <details>
@@ -197,8 +197,8 @@ bash install.sh --extras llamacpp,mlx
 curl -fsSL ... | bash
 
 # Uninstall
-copaw uninstall          # keeps config and data
-copaw uninstall --purge  # removes everything
+taskbolt uninstall          # keeps config and data
+taskbolt uninstall --purge  # removes everything
 ```
 
 **Windows (PowerShell):**
@@ -219,8 +219,8 @@ irm ... | iex; .\install.ps1 -Version 0.0.2
 irm ... | iex
 
 # Uninstall
-copaw uninstall          # keeps config and data
-copaw uninstall --purge  # removes everything
+taskbolt uninstall          # keeps config and data
+taskbolt uninstall --purge  # removes everything
 ```
 
 </details>
@@ -232,13 +232,13 @@ copaw uninstall --purge  # removes everything
 > - **Potential performance issues**: Startup time, memory usage, and other performance aspects may need further optimization
 > - **Features under development**: Some features may be unstable or missing
 
-If you're not comfortable with command-line tools, you can download and use CoPaw's desktop application without manually configuring Python environments or running commands.
+If you're not comfortable with command-line tools, you can download and use Taskbolt's desktop application without manually configuring Python environments or running commands.
 
 #### Download
 
-Download the desktop app from [GitHub Releases](https://github.com/agentscope-ai/CoPaw/releases):
-- **Windows**: `CoPaw-Setup-<version>.exe`
-- **macOS**: `CoPaw-<version>-macOS.zip` (Apple Silicon recommended)
+Download the desktop app from [GitHub Releases](https://github.com/agentscope-ai/Taskbolt/releases):
+- **Windows**: `Taskbolt-Setup-<version>.exe`
+- **macOS**: `Taskbolt-<version>-macOS.zip` (Apple Silicon recommended)
 
 #### Features
 
@@ -253,57 +253,57 @@ Download the desktop app from [GitHub Releases](https://github.com/agentscope-ai
 
 #### macOS: Bypass System Security Restrictions
 
-When you download the CoPaw macOS app from Releases, macOS may show: *"Apple cannot verify that 'CoPaw' contains no malicious software"*. This happens because the app is not notarized. You can still open it as follows:
+When you download the Taskbolt macOS app from Releases, macOS may show: *"Apple cannot verify that 'Taskbolt' contains no malicious software"*. This happens because the app is not notarized. You can still open it as follows:
 
 - **Right-click to open (recommended)**
-  Right-click (or Control+click) the CoPaw app → **Open** → in the dialog click **Open** again. This tells Gatekeeper you trust the app; after that you can double-click to launch as usual.
+  Right-click (or Control+click) the Taskbolt app → **Open** → in the dialog click **Open** again. This tells Gatekeeper you trust the app; after that you can double-click to launch as usual.
 
 - **Allow in System Settings**
-  If it is still blocked, go to **System Settings → Privacy & Security**, scroll to the message like *"CoPaw was blocked because it is from an unidentified developer"*, and click **Open Anyway** or **Allow**.
+  If it is still blocked, go to **System Settings → Privacy & Security**, scroll to the message like *"Taskbolt was blocked because it is from an unidentified developer"*, and click **Open Anyway** or **Allow**.
 
 - **Remove quarantine attribute (not recommended for most users)**
   In Terminal run:
-  `xattr -cr /Applications/CoPaw.app`
+  `xattr -cr /Applications/Taskbolt.app`
   (or use the path to the `.app` after unzipping). This clears the "downloaded from the internet" quarantine flag so the warning usually does not appear, but is less safe and controllable than using **Right-click → Open**.
 
-For detailed usage instructions, troubleshooting, and common issues, see the [Desktop Application Guide](https://copaw.agentscope.io/docs/desktop).
+For detailed usage instructions, troubleshooting, and common issues, see the [Desktop Application Guide](https://taskbolt.agentscope.io/docs/desktop).
 
 ### Using Docker
 
-Images are on **Docker Hub** (`agentscope/copaw`). Image tags: `latest` (stable); `pre` (PyPI pre-release).
+Images are on **Docker Hub** (`agentscope/taskbolt`). Image tags: `latest` (stable); `pre` (PyPI pre-release).
 
 ```bash
-docker pull agentscope/copaw:latest
+docker pull agentscope/taskbolt:latest
 docker run -p 127.0.0.1:8088:8088 \
-  -v copaw-data:/app/working \
-  -v copaw-secrets:/app/working.secret \
-  agentscope/copaw:latest
+  -v taskbolt-data:/app/working \
+  -v taskbolt-secrets:/app/working.secret \
+  agentscope/taskbolt:latest
 ```
 
-Also available on Alibaba Cloud Container Registry (ACR) for users in China: `agentscope-registry.ap-southeast-1.cr.aliyuncs.com/agentscope/copaw` (same tags).
+Also available on Alibaba Cloud Container Registry (ACR) for users in China: `agentscope-registry.ap-southeast-1.cr.aliyuncs.com/agentscope/taskbolt` (same tags).
 
-Then open **http://127.0.0.1:8088/** for the Console. Config, memory, and skills are stored in the `copaw-data` volume; model provider settings and API keys are in the `copaw-secrets` volume. To pass API keys (e.g. `DASHSCOPE_API_KEY`), add `-e VAR=value` or `--env-file .env` to `docker run`.
+Then open **http://127.0.0.1:8088/** for the Console. Config, memory, and skills are stored in the `taskbolt-data` volume; model provider settings and API keys are in the `taskbolt-secrets` volume. To pass API keys (e.g. `DASHSCOPE_API_KEY`), add `-e VAR=value` or `--env-file .env` to `docker run`.
 
 > **Connecting to Ollama or other services on the host machine**
 >
-> Inside a Docker container, `localhost` refers to the container itself, not your host machine. If you run Ollama (or other model services) on the host and want CoPaw in Docker to reach them, use one of these approaches:
+> Inside a Docker container, `localhost` refers to the container itself, not your host machine. If you run Ollama (or other model services) on the host and want Taskbolt in Docker to reach them, use one of these approaches:
 >
 > **Option A** — Explicit host binding (all platforms):
 > ```bash
 > docker run -p 127.0.0.1:8088:8088 \
 >   --add-host=host.docker.internal:host-gateway \
->   -v copaw-data:/app/working \
->   -v copaw-secrets:/app/working.secret \
->   agentscope/copaw:latest
+>   -v taskbolt-data:/app/working \
+>   -v taskbolt-secrets:/app/working.secret \
+>   agentscope/taskbolt:latest
 > ```
-> Then in CoPaw **Settings → Models**, change the Base URL to `http://host.docker.internal:<port>` — for example, `http://host.docker.internal:11434` for Ollama, or `http://host.docker.internal:1234/v1` for LM Studio.
+> Then in Taskbolt **Settings → Models**, change the Base URL to `http://host.docker.internal:<port>` — for example, `http://host.docker.internal:11434` for Ollama, or `http://host.docker.internal:1234/v1` for LM Studio.
 >
 > **Option B** — Host networking (Linux only):
 > ```bash
 > docker run --network=host \
->   -v copaw-data:/app/working \
->   -v copaw-secrets:/app/working.secret \
->   agentscope/copaw:latest
+>   -v taskbolt-data:/app/working \
+>   -v taskbolt-secrets:/app/working.secret \
+>   agentscope/taskbolt:latest
 > ```
 > No port mapping (`-p`) is needed; the container shares the host network directly. Note that all container ports are exposed on the host, which may cause conflicts if the port is already in use.
 >
@@ -313,44 +313,44 @@ The image is built from scratch. To build the image yourself, please refer to th
 
 ### Using ModelScope
 
-**No local install?** [ModelScope Studio](https://modelscope.cn/studios/fork?target=AgentScope/CoPaw) one-click cloud setup. Set your Studio to **non-public** so others cannot control your CoPaw.
+**No local install?** [ModelScope Studio](https://modelscope.cn/studios/fork?target=AgentScope/Taskbolt) one-click cloud setup. Set your Studio to **non-public** so others cannot control your Taskbolt.
 
 ### Deploy on Alibaba Cloud ECS
 
-To run CoPaw on Alibaba Cloud (ECS), use the one-click deployment: open the [CoPaw on Alibaba Cloud (ECS) deployment link](https://computenest.console.aliyun.com/service/instance/create/cn-hangzhou?type=user&ServiceId=service-1ed84201799f40879884) and follow the prompts. For step-by-step instructions, see [Alibaba Cloud Developer: Deploy your AI assistant in 3 minutes](https://developer.aliyun.com/article/1713682).
+To run Taskbolt on Alibaba Cloud (ECS), use the one-click deployment: open the [Taskbolt on Alibaba Cloud (ECS) deployment link](https://computenest.console.aliyun.com/service/instance/create/cn-hangzhou?type=user&ServiceId=service-1ed84201799f40879884) and follow the prompts. For step-by-step instructions, see [Alibaba Cloud Developer: Deploy your AI assistant in 3 minutes](https://developer.aliyun.com/article/1713682).
 
 ---
 
 ## API Key
 
-If you use a **cloud LLM** (e.g. DashScope, ModelScope), you must configure an API key before chatting. CoPaw will not work until a valid key is set. See the [official docs](https://copaw.agentscope.io/docs/models#configure-cloud-providers) for details.
+If you use a **cloud LLM** (e.g. DashScope, ModelScope), you must configure an API key before chatting. Taskbolt will not work until a valid key is set. See the [official docs](https://taskbolt.agentscope.io/docs/models#configure-cloud-providers) for details.
 
 **How to configure:**
 
-1. **Console (recommended)** — After running `copaw app`, open **http://127.0.0.1:8088/** → **Settings** → **Models**. Choose a provider, enter the **API Key**, and enable that provider and model.
-2. **`copaw init`** — When you run `copaw init`, it will guide you through configuring the LLM provider and API key. Follow the prompts to choose a provider and enter your key.
+1. **Console (recommended)** — After running `taskbolt app`, open **http://127.0.0.1:8088/** → **Settings** → **Models**. Choose a provider, enter the **API Key**, and enable that provider and model.
+2. **`taskbolt init`** — When you run `taskbolt init`, it will guide you through configuring the LLM provider and API key. Follow the prompts to choose a provider and enter your key.
 3. **Environment variable** — For DashScope you can set `DASHSCOPE_API_KEY` in your shell or in a `.env` file in the working directory.
 
-Tools that need extra keys (e.g. `TAVILY_API_KEY` for web search) can be set in Console **Settings → Environment variables**, or see [Config](https://copaw.agentscope.io/docs/config) for details.
+Tools that need extra keys (e.g. `TAVILY_API_KEY` for web search) can be set in Console **Settings → Environment variables**, or see [Config](https://taskbolt.agentscope.io/docs/config) for details.
 
 > **Using local models only?** If you use [Local Models](#local-models) (llama.cpp or MLX), you do **not** need any API key.
 
 ## Local Models
 
-CoPaw can run LLMs entirely on your machine — no API keys or cloud services required. See the [official docs](https://copaw.agentscope.io/docs/models#local-providers-llamacpp--mlx) for details.
+Taskbolt can run LLMs entirely on your machine — no API keys or cloud services required. See the [official docs](https://taskbolt.agentscope.io/docs/models#local-providers-llamacpp--mlx) for details.
 
 | Backend       | Best for                                 | Install                                                              |
 | ------------- | ---------------------------------------- | -------------------------------------------------------------------- |
-| **llama.cpp** | Cross-platform (macOS / Linux / Windows) | `pip install 'copaw[llamacpp]'` or `bash install.sh --extras llamacpp` |
-| **MLX**       | Apple Silicon Macs (M1/M2/M3/M4)         | `pip install 'copaw[mlx]'` or `bash install.sh --extras mlx`         |
-| **Ollama**    | Cross-platform (requires Ollama service) | `pip install 'copaw[ollama]'` or `bash install.sh --extras ollama`   |
+| **llama.cpp** | Cross-platform (macOS / Linux / Windows) | `pip install 'taskbolt[llamacpp]'` or `bash install.sh --extras llamacpp` |
+| **MLX**       | Apple Silicon Macs (M1/M2/M3/M4)         | `pip install 'taskbolt[mlx]'` or `bash install.sh --extras mlx`         |
+| **Ollama**    | Cross-platform (requires Ollama service) | `pip install 'taskbolt[ollama]'` or `bash install.sh --extras ollama`   |
 
 After installing, you can download and manage local models in the **Console** UI. You can also use the command line:
 
 ```bash
-copaw models download Qwen/Qwen3-4B-GGUF
-copaw models # select the downloaded model
-copaw app # start the server
+taskbolt models download Qwen/Qwen3-4B-GGUF
+taskbolt models # select the downloaded model
+taskbolt app # start the server
 ```
 
 ---
@@ -359,20 +359,20 @@ copaw app # start the server
 
 | Topic                                                                 | Description                                      |
 | --------------------------------------------------------------------- | ------------------------------------------------ |
-| [Introduction](https://copaw.agentscope.io/docs/intro)                | What CoPaw is and how to use it                  |
-| [Quick start](https://copaw.agentscope.io/docs/quickstart)            | Install and run (local or ModelScope Studio)    |
-| [Console](https://copaw.agentscope.io/docs/console)                   | Web UI: chat and agent configuration            |
-| [Models](https://copaw.agentscope.io/docs/models)                     | Configure cloud, local, and custom providers    |
-| [Channels](https://copaw.agentscope.io/docs/channels)                  | DingTalk, Feishu, QQ, Discord, iMessage, and more |
-| [Skills](https://copaw.agentscope.io/docs/skills)                      | Extend and customize capabilities               |
-| [MCP](https://copaw.agentscope.io/docs/mcp)                            | Manage MCP clients                               |
-| [Memory](https://copaw.agentscope.io/docs/memory)                     | Long-term memory                     |
-| [Context](https://copaw.agentscope.io/docs/context)                   | Context management mechanism                     |
-| [Magic commands](https://copaw.agentscope.io/docs/commands)           | Control conversation state without waiting for the AI |
-| [Heartbeat](https://copaw.agentscope.io/docs/heartbeat)                | Scheduled check-in and digest                    |
-| [Config & working dir](https://copaw.agentscope.io/docs/config) | Working directory and config file                |
-| [CLI](https://copaw.agentscope.io/docs/cli)                            | Init, cron jobs, skills, clean                   |
-| [FAQ](https://copaw.agentscope.io/docs/faq)                           | Common questions and troubleshooting             |
+| [Introduction](https://taskbolt.agentscope.io/docs/intro)                | What Taskbolt is and how to use it                  |
+| [Quick start](https://taskbolt.agentscope.io/docs/quickstart)            | Install and run (local or ModelScope Studio)    |
+| [Console](https://taskbolt.agentscope.io/docs/console)                   | Web UI: chat and agent configuration            |
+| [Models](https://taskbolt.agentscope.io/docs/models)                     | Configure cloud, local, and custom providers    |
+| [Channels](https://taskbolt.agentscope.io/docs/channels)                  | DingTalk, Feishu, QQ, Discord, iMessage, and more |
+| [Skills](https://taskbolt.agentscope.io/docs/skills)                      | Extend and customize capabilities               |
+| [MCP](https://taskbolt.agentscope.io/docs/mcp)                            | Manage MCP clients                               |
+| [Memory](https://taskbolt.agentscope.io/docs/memory)                     | Long-term memory                     |
+| [Context](https://taskbolt.agentscope.io/docs/context)                   | Context management mechanism                     |
+| [Magic commands](https://taskbolt.agentscope.io/docs/commands)           | Control conversation state without waiting for the AI |
+| [Heartbeat](https://taskbolt.agentscope.io/docs/heartbeat)                | Scheduled check-in and digest                    |
+| [Config & working dir](https://taskbolt.agentscope.io/docs/config) | Working directory and config file                |
+| [CLI](https://taskbolt.agentscope.io/docs/cli)                            | Init, cron jobs, skills, clean                   |
+| [FAQ](https://taskbolt.agentscope.io/docs/faq)                           | Common questions and troubleshooting             |
 
 Full docs in this repo: [website/public/docs/](website/public/docs/).
 
@@ -380,7 +380,7 @@ Full docs in this repo: [website/public/docs/](website/public/docs/).
 
 ## FAQ
 
-For common questions, troubleshooting tips, and known issues, please visit the **[FAQ page](https://copaw.agentscope.io/docs/faq)**.
+For common questions, troubleshooting tips, and known issues, please visit the **[FAQ page](https://taskbolt.agentscope.io/docs/faq)**.
 
 ---
 
@@ -398,7 +398,7 @@ For common questions, troubleshooting tips, and known issues, please visit the *
 |                                       | Inter-agent contention resolution                                                                                                                | Planned              |
 |                                       | Multi-agent communication                                                                                                                        | Planned              |
 | **Multimodal**                        | Voice/video calls and real-time interaction                                                                                                      | In Progress          |
-| **Small + Large Model Collaboration** | Train/fine-tune local small LLMs for CoPaw workflows and sensitive-data use cases                                                                | In Progress          |
+| **Small + Large Model Collaboration** | Train/fine-tune local small LLMs for Taskbolt workflows and sensitive-data use cases                                                                | In Progress          |
 |                                       | Multi-model routing. Local LLMs for sensitive data; cloud LLMs for planning and coding; balance of privacy, performance, and capability          | Planned              |
 | **Memory System**                     | Experience distillation & skill extraction                                                                                                       | In Progress          |
 |                                       | Multimodal memory fusion                                                                                                                         | Planned              |
@@ -416,41 +416,41 @@ For common questions, troubleshooting tips, and known issues, please visit the *
 
 ### Get involved
 
-We are building CoPaw in the open and welcome contributions of all kinds! Check the [Roadmap](#roadmap) above (especially items marked **Seeking Contributors**) to find areas that interest you, and read [CONTRIBUTING](https://github.com/agentscope-ai/CoPaw/blob/main/CONTRIBUTING.md) to get started. We particularly welcome:
+We are building Taskbolt in the open and welcome contributions of all kinds! Check the [Roadmap](#roadmap) above (especially items marked **Seeking Contributors**) to find areas that interest you, and read [CONTRIBUTING](https://github.com/agentscope-ai/Taskbolt/blob/main/CONTRIBUTING.md) to get started. We particularly welcome:
 
 - **Horizontal expansion** — new channels, model providers, skills, MCPs.
 - **Existing feature extension** — display and UX improvements, download hints, Windows path compatibility, and the like.
 
-Join the conversation on [GitHub Discussions](https://github.com/agentscope-ai/CoPaw/discussions) to suggest or pick up work.
+Join the conversation on [GitHub Discussions](https://github.com/agentscope-ai/Taskbolt/discussions) to suggest or pick up work.
 
 ---
 
 ## Install from source
 
 ```bash
-git clone https://github.com/agentscope-ai/CoPaw.git
-cd CoPaw
+git clone https://github.com/agentscope-ai/Taskbolt.git
+cd Taskbolt
 
 # Build console frontend first (required for web UI)
 cd console && npm ci && npm run build
 cd ..
 
 # Copy console build output to package directory
-mkdir -p src/copaw/console
-cp -R console/dist/. src/copaw/console/
+mkdir -p src/taskbolt/console
+cp -R console/dist/. src/taskbolt/console/
 
 # Install Python package
 pip install -e .
 ```
 
 - **Dev** (tests, formatting): `pip install -e ".[dev,full]"`
-- **Then**: Run `copaw init --defaults`, then `copaw app`.
+- **Then**: Run `taskbolt init --defaults`, then `taskbolt app`.
 
 ---
 
-## Why CoPaw?
+## Why Taskbolt?
 
-CoPaw represents both a **Co Personal Agent Workstation** and a "co-paw"—a partner always by your side. More than just a cold tool, CoPaw is a warm "little paw" always ready to lend a hand (or a paw!). It is the ultimate teammate for your digital life.
+Taskbolt represents both a **Co Personal Agent Workstation** and a "co-paw"—a partner always by your side. More than just a cold tool, Taskbolt is a warm "little paw" always ready to lend a hand (or a paw!). It is the ultimate teammate for your digital life.
 
 ---
 
@@ -470,11 +470,11 @@ CoPaw represents both a **Co Personal Agent Workstation** and a "co-paw"—a par
 
 ## Telemetry
 
-CoPaw collects **anonymous** usage data during `copaw init` to help us understand our user base and prioritize improvements. Data is sent **once per version** — when you upgrade CoPaw, telemetry is re-collected so we can track version adoption.
+Taskbolt collects **anonymous** usage data during `taskbolt init` to help us understand our user base and prioritize improvements. Data is sent **once per version** — when you upgrade Taskbolt, telemetry is re-collected so we can track version adoption.
 
 **What we collect:**
 
-- CoPaw version (e.g., 0.0.7)
+- Taskbolt version (e.g., 0.0.7)
 - Install method (pip, Docker, or desktop app)
 - OS and version (e.g., macOS 14.0, Ubuntu 22.04)
 - Python version (e.g., 3.13)
@@ -483,13 +483,13 @@ CoPaw collects **anonymous** usage data during `copaw init` to help us understan
 
 **What we do NOT collect:** No personal data, no files, no credentials, no IP addresses, no identifiable information.
 
-When running `copaw init` interactively, you will be asked whether to opt in. If you choose `--defaults`, telemetry is accepted automatically. The prompt appears once per version and never affects CoPaw's functionality.
+When running `taskbolt init` interactively, you will be asked whether to opt in. If you choose `--defaults`, telemetry is accepted automatically. The prompt appears once per version and never affects Taskbolt's functionality.
 
 ---
 
 ## License
 
-CoPaw is released under the [Apache License 2.0](LICENSE).
+Taskbolt is released under the [Apache License 2.0](LICENSE).
 
 ---
 
@@ -497,6 +497,6 @@ CoPaw is released under the [Apache License 2.0](LICENSE).
 
 All thanks to our contributors:
 
-<a href="https://github.com/agentscope-ai/CoPaw/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=agentscope-ai/CoPaw" alt="Contributors" />
+<a href="https://github.com/agentscope-ai/Taskbolt/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=agentscope-ai/Taskbolt" alt="Contributors" />
 </a>

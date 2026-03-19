@@ -7,12 +7,12 @@ from unittest.mock import patch, MagicMock
 import pytest
 from click.testing import CliRunner
 
-from copaw.cli.channels_cmd import channels_group
-from copaw.cli.cron_cmd import cron_group
-from copaw.cli.daemon_cmd import daemon_group
-from copaw.cli.chats_cmd import chats_group
-from copaw.cli.skills_cmd import skills_group
-from copaw.config.config import AgentProfileConfig
+from taskbolt.cli.channels_cmd import channels_group
+from taskbolt.cli.cron_cmd import cron_group
+from taskbolt.cli.daemon_cmd import daemon_group
+from taskbolt.cli.chats_cmd import chats_group
+from taskbolt.cli.skills_cmd import skills_group
+from taskbolt.config.config import AgentProfileConfig
 
 
 @pytest.fixture

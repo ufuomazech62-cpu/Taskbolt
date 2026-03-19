@@ -7,9 +7,9 @@ from types import SimpleNamespace
 
 import pytest
 
-import copaw.providers.provider_manager as provider_manager_module
-from copaw.providers.openai_provider import OpenAIProvider
-from copaw.providers.provider_manager import (
+import taskbolt.providers.provider_manager as provider_manager_module
+from taskbolt.providers.openai_provider import OpenAIProvider
+from taskbolt.providers.provider_manager import (
     KIMI_MODELS,
     PROVIDER_KIMI_CN,
     PROVIDER_KIMI_INTL,
