@@ -1,0 +1,490 @@
+// Taskbolt SaaS Multi-Tenant Database Schema
+// Designed for Google Cloud SQL (PostgreSQL)
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================================================
+// TENANT & USER MANAGEMENT
+// ============================================================================
+
+/// Tenant (Organization/Account) - Top-level isolation unit
+model Tenant {
+  id                String   @id @default(cuid())
+  slug              String   @unique // URL-friendly identifier
+  name              String
+  logoUrl           String?
+  
+  // Subscription & Billing
+  plan              Plan     @default(FREE)
+  stripeCustomerId  String?  @unique
+  stripeSubscriptionId String?
+  subscriptionStatus SubscriptionStatus @default(INACTIVE)
+  trialEndsAt       DateTime?
+  
+  // Limits & Quotas
+  maxAgents         Int      @default(1)
+  maxUsers          Int      @default(1)
+  maxStorageBytes   BigInt   @default(1073741824) // 1GB default
+  rateLimitPerMinute Int     @default(60)
+  
+  // Settings
+  settings          Json     @default("{}")
+  
+  // Timestamps
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  
+  // Relations
+  users             User[]
+  agents            Agent[]
+  apiKeys           ApiKey[]
+  auditLogs         AuditLog[]
+  usageRecords      UsageRecord[]
+  files             File[]
+  
+  @@index([slug])
+  @@index([stripeCustomerId])
+}
+
+/// User - Authenticated user (managed by Firebase Auth, synced here)
+model User {
+  id                String   @id @default(cuid())
+  tenantId          String
+  firebaseUid       String   @unique // Firebase Auth UID
+  email             String
+  displayName       String?
+  avatarUrl         String?
+  
+  // Role & Permissions
+  role              UserRole @default(MEMBER)
+  permissions       Json     @default("[]")
+  
+  // Status
+  isActive          Boolean  @default(true)
+  lastLoginAt       DateTime?
+  
+  // Timestamps
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  
+  // Relations
+  tenant            Tenant   @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  chats             Chat[]
+  sessions          Session[]
+  auditLogs         AuditLog[]
+  
+  @@unique([tenantId, email])
+  @@index([firebaseUid])
+  @@index([tenantId])
+}
+
+/// API Key - For programmatic access
+model ApiKey {
+  id                String   @id @default(cuid())
+  tenantId          String
+  name              String
+  keyHash           String   @unique // Hashed API key
+  keyPrefix         String   // First 8 chars for identification
+  
+  // Permissions & Scope
+  scopes            Json     @default("[]") // ["read", "write", "admin"]
+  agentId           String?  // Optional: restrict to specific agent
+  
+  // Limits
+  rateLimitPerMinute Int?
+  expiresAt         DateTime?
+  
+  // Status
+  isActive          Boolean  @default(true)
+  lastUsedAt        DateTime?
+  
+  // Timestamps
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  
+  // Relations
+  tenant            Tenant   @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  
+  @@index([tenantId])
+  @@index([keyPrefix])
+}
+
+// ============================================================================
+// AGENT CONFIGURATION
+// ============================================================================
+
+/// Agent - Tenant-scoped agent instance
+model Agent {
+  id                String   @id @default(cuid())
+  tenantId          String
+  externalId        String   // User-facing agent ID (e.g., "default", "assistant")
+  name              String
+  description       String?
+  
+  // Configuration (JSON blobs matching existing Pydantic models)
+  channels          Json     @default("{}")
+  mcp               Json     @default("{}")
+  tools             Json     @default("{}")
+  security          Json     @default("{}")
+  running           Json     @default("{}")
+  llmRouting        Json     @default("{}")
+  
+  // Model Configuration
+  activeModel       Json?    // ModelSlotConfig
+  
+  // System Prompts
+  systemPromptFiles Json     @default("[]") // List of markdown files
+  customPrompts     Json     @default("{}") // Custom prompt overrides
+  
+  // Heartbeat
+  heartbeatEnabled  Boolean  @default(false)
+  heartbeatConfig   Json     @default("{}")
+  
+  // Status
+  isActive          Boolean  @default(true)
+  lastActiveAt      DateTime?
+  
+  // Timestamps
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  
+  // Relations
+  tenant            Tenant   @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  chats             Chat[]
+  jobs              Job[]
+  sessions          Session[]
+  memoryEntries     MemoryEntry[]
+  
+  @@unique([tenantId, externalId])
+  @@index([tenantId])
+}
+
+// ============================================================================
+// CHAT & CONVERSATION
+// ============================================================================
+
+/// Chat - Conversation thread
+model Chat {
+  id                String   @id @default(cuid())
+  tenantId          String
+  agentId           String
+  userId            String
+  
+  // Identification
+  externalId        String   @default(cuid()) // UUID for external reference
+  name              String   @default("New Chat")
+  
+  // Channel Context
+  channel           String   @default("console")
+  sessionId         String   // Channel:user_id format
+  
+  // State
+  status            ChatStatus @default(IDLE)
+  
+  // Metadata
+  metadata          Json     @default("{}")
+  
+  // Timestamps
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  
+  // Relations
+  agent             Agent    @relation(fields: [agentId], references: [id], onDelete: Cascade)
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  messages          Message[]
+  
+  @@unique([tenantId, externalId])
+  @@index([tenantId, agentId])
+  @@index([tenantId, userId])
+}
+
+/// Message - Individual message in a chat
+model Message {
+  id                String   @id @default(cuid())
+  tenantId          String
+  chatId            String
+  
+  // Message Content
+  role              MessageRole
+  content           String   @db.Text
+  name              String?
+  
+  // Tool Calls (if any)
+  toolCalls         Json?
+  toolCallId        String?
+  
+  // Metadata
+  tokenCount        Int?
+  metadata          Json     @default("{}")
+  
+  // Timestamps
+  createdAt         DateTime @default(now())
+  
+  // Relations
+  chat              Chat     @relation(fields: [chatId], references: [id], onDelete: Cascade)
+  
+  @@index([tenantId, chatId])
+  @@index([chatId, createdAt])
+}
+
+/// Session - Active agent session
+model Session {
+  id                String   @id @default(cuid())
+  tenantId          String
+  agentId           String
+  userId            String
+  
+  // Session Info
+  sessionId         String   @unique // Channel:user_id format
+  channel           String
+  
+  // State
+  status            SessionStatus @default(ACTIVE)
+  
+  // Timestamps
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  expiresAt         DateTime?
+  
+  // Relations
+  agent             Agent    @relation(fields: [agentId], references: [id], onDelete: Cascade)
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@index([tenantId, agentId])
+  @@index([sessionId])
+}
+
+// ============================================================================
+// CRON JOBS
+// ============================================================================
+
+/// Job - Scheduled task
+model Job {
+  id                String   @id @default(cuid())
+  tenantId          String
+  agentId           String
+  
+  // Job Definition
+  externalId        String   // User-facing ID
+  name              String
+  enabled           Boolean  @default(true)
+  
+  // Schedule
+  scheduleType      String   @default("cron")
+  cronExpression    String
+  timezone          String   @default("UTC")
+  
+  // Task Configuration
+  taskType          String   @default("agent") // "text" or "agent"
+  taskConfig        Json     @default("{}")
+  
+  // Dispatch Configuration
+  dispatchConfig    Json     @default("{}")
+  
+  // Runtime Settings
+  maxConcurrency    Int      @default(1)
+  timeoutSeconds    Int      @default(120)
+  misfireGraceSeconds Int    @default(60)
+  
+  // State
+  lastRunAt         DateTime?
+  nextRunAt         DateTime?
+  lastStatus        JobStatus?
+  lastError         String?  @db.Text
+  
+  // Timestamps
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  
+  // Relations
+  agent             Agent    @relation(fields: [agentId], references: [id], onDelete: Cascade)
+  
+  @@unique([tenantId, externalId])
+  @@index([tenantId, agentId])
+  @@index([nextRunAt])
+}
+
+// ============================================================================
+// MEMORY & KNOWLEDGE
+// ============================================================================
+
+/// MemoryEntry - Agent memory/knowledge storage
+model MemoryEntry {
+  id                String   @id @default(cuid())
+  tenantId          String
+  agentId           String
+  
+  // Memory Content
+  content           String   @db.Text
+  embedding         Float[]  // Vector embedding
+  
+  // Metadata
+  source            String?  // Where this memory came from
+  importance        Float    @default(0.5)
+  accessCount       Int      @default(0)
+  
+  // Timestamps
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  lastAccessedAt    DateTime?
+  
+  // Relations
+  agent             Agent    @relation(fields: [agentId], references: [id], onDelete: Cascade)
+  
+  @@index([tenantId, agentId])
+}
+
+// ============================================================================
+// FILE STORAGE
+// ============================================================================
+
+/// File - Stored file metadata
+model File {
+  id                String   @id @default(cuid())
+  tenantId          String
+  
+  // File Info
+  filename          String
+  mimeType          String
+  sizeBytes         BigInt
+  storagePath       String   // Cloud Storage path
+  
+  // Access Control
+  isPublic          Boolean  @default(false)
+  allowedUsers      Json     @default("[]")
+  
+  // Metadata
+  metadata          Json     @default("{}")
+  
+  // Timestamps
+  createdAt         DateTime @default(now())
+  expiresAt         DateTime?
+  
+  // Relations
+  tenant            Tenant   @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  
+  @@index([tenantId])
+  @@index([storagePath])
+}
+
+// ============================================================================
+// AUDIT & USAGE
+// ============================================================================
+
+/// AuditLog - Security and compliance audit trail
+model AuditLog {
+  id                String   @id @default(cuid())
+  tenantId          String
+  userId            String?
+  
+  // Event Details
+  action            String   // e.g., "agent.created", "chat.message.sent"
+  resourceType      String   // e.g., "agent", "chat", "user"
+  resourceId        String?
+  
+  // Request Context
+  ipAddress         String?
+  userAgent         String?
+  
+  // Changes
+  oldValues         Json?
+  newValues         Json?
+  
+  // Timestamp
+  createdAt         DateTime @default(now())
+  
+  // Relations
+  tenant            Tenant   @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  user              User?    @relation(fields: [userId], references: [id])
+  
+  @@index([tenantId, createdAt])
+  @@index([action])
+  @@index([resourceType, resourceId])
+}
+
+/// UsageRecord - Token usage and billing metrics
+model UsageRecord {
+  id                String   @id @default(cuid())
+  tenantId          String
+  
+  // Usage Details
+  agentId           String?
+  modelProvider     String?
+  modelName         String?
+  
+  // Token Counts
+  inputTokens       Int      @default(0)
+  outputTokens      Int      @default(0)
+  totalTokens       Int      @default(0)
+  
+  // Cost (in cents)
+  estimatedCostCents Int     @default(0)
+  
+  // Timestamp
+  createdAt         DateTime @default(now())
+  
+  // Relations
+  tenant            Tenant   @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  
+  @@index([tenantId, createdAt])
+  @@index([tenantId, agentId])
+}
+
+// ============================================================================
+// ENUMS
+// ============================================================================
+
+enum Plan {
+  FREE
+  STARTER
+  PROFESSIONAL
+  ENTERPRISE
+}
+
+enum SubscriptionStatus {
+  INACTIVE
+  ACTIVE
+  PAST_DUE
+  CANCELLED
+  TRIALING
+}
+
+enum UserRole {
+  OWNER     // Full access, billing
+  ADMIN     // Manage users, agents
+  MEMBER    // Use agents
+  VIEWER    // Read-only access
+}
+
+enum ChatStatus {
+  IDLE
+  RUNNING
+  ARCHIVED
+}
+
+enum MessageRole {
+  SYSTEM
+  USER
+  ASSISTANT
+  TOOL
+}
+
+enum SessionStatus {
+  ACTIVE
+  INACTIVE
+  EXPIRED
+}
+
+enum JobStatus {
+  SUCCESS
+  ERROR
+  RUNNING
+  SKIPPED
+}

@@ -1,0 +1,211 @@
+# Taskbolt SaaS - Docker Compose Development Environment
+#
+# This sets up a complete local development environment with:
+# - PostgreSQL database
+# - Redis for caching and rate limiting
+# - Firebase Auth Emulator
+# - Backend API server
+# - Frontend development server
+#
+# Usage:
+#   docker-compose up -d
+#   docker-compose logs -f backend
+#   docker-compose down
+
+services:
+  # ==========================================================================
+  # DATABASE - PostgreSQL
+  # ==========================================================================
+  postgres:
+    image: postgres:15-alpine
+    container_name: taskbolt-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: taskbolt
+      POSTGRES_PASSWORD: taskbolt_dev_password
+      POSTGRES_DB: taskbolt_saas
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-db.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U taskbolt -d taskbolt_saas"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ==========================================================================
+  # CACHE - Redis
+  # ==========================================================================
+  redis:
+    image: redis:7-alpine
+    container_name: taskbolt-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ==========================================================================
+  # FIREBASE EMULATOR
+  # ==========================================================================
+  firebase:
+    build:
+      context: ./firebase-emulator
+      dockerfile: Dockerfile
+    container_name: taskbolt-firebase
+    restart: unless-stopped
+    ports:
+      - "4000:4000"  # Emulator UI
+      - "9099:9099"  # Auth Emulator
+      - "8080:8080"  # Firestore Emulator
+      - "9199:9199"  # Storage Emulator
+    environment:
+      - FIREBASE_PROJECT_ID=taskbolt-dev
+    volumes:
+      - firebase_data:/opt/firebase/data
+
+  # ==========================================================================
+  # BACKEND - FastAPI
+  # ==========================================================================
+  backend:
+    build:
+      context: ../
+      dockerfile: saas/deploy/Dockerfile.dev
+    container_name: taskbolt-backend
+    restart: unless-stopped
+    ports:
+      - "8088:8088"
+    environment:
+      # Database
+      DATABASE_URL: postgresql://taskbolt:taskbolt_dev_password@postgres:5432/taskbolt_saas?schema=public
+      
+      # Redis
+      REDIS_URL: redis://redis:6379/0
+      
+      # Firebase (emulator)
+      FIREBASE_PROJECT_ID: taskbolt-dev
+      FIREBASE_AUTH_EMULATOR_HOST: firebase:9099
+      FIRESTORE_EMULATOR_HOST: firebase:8080
+      
+      # Application
+      TASKBOLT_PORT: 8088
+      TASKBOLT_DEBUG: "true"
+      TASKBOLT_CORS_ORIGINS: "http://localhost:5173,http://localhost:3000"
+      
+      # Rate Limiting
+      RATE_LIMIT_ENABLED: "true"
+      
+      # Stripe (test mode)
+      STRIPE_SECRET_KEY: sk_test_placeholder
+      STRIPE_WEBHOOK_SECRET: whsec_placeholder
+      
+    volumes:
+      - ../saas/backend:/app/backend:ro
+      - ../saas/prisma:/app/prisma:ro
+      - backend_data:/app/data
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      firebase:
+        condition: service_started
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8088/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # ==========================================================================
+  # FRONTEND - React/Vite Dev Server
+  # ==========================================================================
+  frontend:
+    build:
+      context: ../saas/frontend
+      dockerfile: Dockerfile.dev
+    container_name: taskbolt-frontend
+    restart: unless-stopped
+    ports:
+      - "5173:5173"
+    environment:
+      # API
+      VITE_API_URL: http://localhost:8088/api
+      
+      # Firebase (emulator)
+      VITE_FIREBASE_API_KEY: placeholder
+      VITE_FIREBASE_AUTH_DOMAIN: localhost:9099
+      VITE_FIREBASE_PROJECT_ID: taskbolt-dev
+      VITE_FIREBASE_STORAGE_BUCKET: taskbolt-dev.appspot.com
+      
+    volumes:
+      - ../saas/frontend/src:/app/src:ro
+      - ../saas/frontend/public:/app/public:ro
+      - ../saas/frontend/index.html:/app/index.html:ro
+    depends_on:
+      - backend
+
+  # ==========================================================================
+  # DATABASE ADMIN - pgAdmin (Optional)
+  # ==========================================================================
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: taskbolt-pgadmin
+    restart: unless-stopped
+    ports:
+      - "5050:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@taskbolt.local
+      PGADMIN_DEFAULT_PASSWORD: admin
+      PGADMIN_CONFIG_SERVER_MODE: "False"
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    depends_on:
+      - postgres
+    profiles:
+      - admin
+
+  # ==========================================================================
+  # REDIS ADMIN - Redis Commander (Optional)
+  # ==========================================================================
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    container_name: taskbolt-redis-ui
+    restart: unless-stopped
+    ports:
+      - "8081:8081"
+    environment:
+      REDIS_HOSTS: local:redis:6379
+    depends_on:
+      - redis
+    profiles:
+      - admin
+
+# ============================================================================
+# VOLUMES
+# ============================================================================
+volumes:
+  postgres_data:
+    name: taskbolt-postgres-data
+  redis_data:
+    name: taskbolt-redis-data
+  firebase_data:
+    name: taskbolt-firebase-data
+  backend_data:
+    name: taskbolt-backend-data
+  pgadmin_data:
+    name: taskbolt-pgadmin-data
+
+# ============================================================================
+# NETWORKS
+# ============================================================================
+networks:
+  default:
+    name: taskbolt-network

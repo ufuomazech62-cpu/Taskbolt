@@ -1,0 +1,68 @@
+# Taskbolt SaaS - Development Dockerfile
+# 
+# This Dockerfile is optimized for development with:
+# - Hot reload enabled
+# - Debug tools included
+# - Source code mounted as volumes
+
+FROM python:3.11-slim
+
+# Environment variables
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PIP_NO_CACHE_DIR=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    curl \
+    git \
+    chromium \
+    chromium-sandbox \
+    libx11-xcb1 \
+    libxcomposite1 \
+    libxdamage1 \
+    libxext6 \
+    libxfixes3 \
+    libxi6 \
+    libxtst6 \
+    libnss3 \
+    libglib2.0-0 \
+    fonts-liberation \
+    && rm -rf /var/lib/apt/lists/*
+
+# Playwright configuration
+ENV PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium \
+    PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
+
+WORKDIR /app
+
+# Install Python dependencies
+COPY requirements-saas.txt ./requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Install Prisma
+RUN pip install prisma
+
+# Copy Prisma schema
+COPY saas/prisma ./prisma
+
+# Generate Prisma client (will be regenerated on startup if needed)
+RUN prisma generate || true
+
+# Copy backend source
+COPY saas/backend ./backend
+
+# Set Python path
+ENV PYTHONPATH=/app
+
+# Expose port
+EXPOSE 8088
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost:8088/health || exit 1
+
+# Run with hot reload
+CMD ["python", "-m", "uvicorn", "backend.app:app", "--host", "0.0.0.0", "--port", "8088", "--reload", "--reload-dir", "/app/backend"]
