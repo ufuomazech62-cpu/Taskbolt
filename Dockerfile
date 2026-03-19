@@ -42,8 +42,8 @@ COPY --from=console-builder /app/console/dist/ ./src/taskbolt/console/
 RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir .[ollama]
 
-# Skip init during build - will be done at runtime
-# RUN taskbolt init --defaults --accept-security
+# Initialize Taskbolt with defaults
+RUN taskbolt init --defaults --accept-security
 
 # Create non-root user for security
 RUN useradd -m -u 1000 taskbolt && \
