@@ -77,7 +77,7 @@
     "nameRequired": "エージェント名を入力してください",
     "namePlaceholder": "例：マイエージェント",
     "descriptionPlaceholder": "このエージェントの目的を簡単に説明してください...",
-    "workspaceHelp": "空欄のままにすると、~/.copaw/workspaces/<id> に自動生成されます",
+    "workspaceHelp": "空欄のままにすると、~/.taskbolt/workspaces/<id> に自動生成されます",
     "defaultNotEditable": "デフォルトのエージェントは編集できません",
     "defaultNotDeletable": "デフォルトのエージェントは削除できません"
   },
@@ -121,7 +121,7 @@
     "pleaseInputName": "スキル名を入力してください",
     "pleaseInputContent": "スキルの内容を入力してください",
     "skillNamePlaceholder": "例: weather_query",
-    "contentPlaceholder": "---\nname: <スキル名> (必須)\ndescription: <スキルの説明> (必須)\nmetadata: { \"copaw\": { \"emoji\": \"🔧\" } }\n---\n\nスキルの実装内容...\n\n# 例:\n# ---\n# name: cron\n# description: copawコマンド経由でcronジョブを管理 - タスクの作成・照会・一時停止・再開・削除\n# metadata: { \"copaw\": { \"emoji\": \"⏰\" } }\n# ---",
+    "contentPlaceholder": "---\nname: <スキル名> (必須)\ndescription: <スキルの説明> (必須)\nmetadata: { \"taskbolt\": { \"emoji\": \"🔧\" } }\n---\n\nスキルの実装内容...\n\n# 例:\n# ---\n# name: cron\n# description: taskboltコマンド経由でcronジョブを管理 - タスクの作成・照会・一時停止・再開・削除\n# metadata: { \"taskbolt\": { \"emoji\": \"⏰\" } }\n# ---",
     "createSuccess": "スキルを作成しました",
     "createFailed": "スキルの作成に失敗しました",
     "deleteConfirm": "このスキルを削除してもよろしいですか？",
@@ -781,7 +781,7 @@
     }
   },
   "login": {
-    "title": "CoPaw にログイン",
+    "title": "Taskbolt にログイン",
     "registerTitle": "アカウント作成",
     "firstUserHint": "管理者アカウントを作成して始めましょう",
     "usernamePlaceholder": "ユーザー名",
@@ -824,13 +824,13 @@
     "providerTypeLocalWhisperDesc": "ローカルにインストールされた openai-whisper Python ライブラリで文字起こしを実行します。ffmpeg と openai-whisper の両方のインストールが必要です。",
     "localWhisperReady": "ローカル Whisper は準備完了です。ffmpeg と openai-whisper がインストールされています。",
     "localWhisperMissing": "ローカル Whisper は準備ができていません。不足している依存関係をインストールしてください。",
-    "localWhisperMissingDesc": "ffmpeg: {{ffmpeg}} | openai-whisper: {{whisper}}。不足している依存関係をインストールしてください：ffmpeg（システムパッケージ）と openai-whisper（uv pip install openai-whisper、または CoPaw を [whisper] エクストラ付きでインストール）。",
+    "localWhisperMissingDesc": "ffmpeg: {{ffmpeg}} | openai-whisper: {{whisper}}。不足している依存関係をインストールしてください：ffmpeg（システムパッケージ）と openai-whisper（uv pip install openai-whisper、または Taskbolt を [whisper] エクストラ付きでインストール）。",
     "providerLabel": "Whisper API プロバイダー",
     "providerDescription": "Whisper API による音声文字起こしに使用するプロバイダーを選択します。Whisper 対応エンドポイントを持つプロバイダーのみ表示されます。",
     "providerPlaceholder": "プロバイダーを選択...",
     "noProvidersWarning": "文字起こし対応のプロバイダーが見つかりません。音声文字起こしを有効にするには、OpenAI プロバイダーを設定してください。",
     "transcriptionInfoTitle": "文字起こしの仕組み",
     "transcriptionInfoDesc": "Whisper API 文字起こしは OpenAI 互換の /v1/audio/transcriptions エンドポイントを使用します。Whisper 対応エンドポイントを持つプロバイダー（例: OpenAI）の設定が必要です。上記で具体的なプロバイダーを選択して文字起こしを有効にしてください。",
-    "transcriptionInfoDescLocal": "ローカル Whisper 文字起こしは、お使いのマシン上で直接 openai-whisper ライブラリを実行します。ffmpeg（音声デコード用）と openai-whisper Python パッケージの両方のインストールが必要です。API キーやネットワーク接続は不要です。インストール：uv pip install 'copaw[whisper]'。"
+    "transcriptionInfoDescLocal": "ローカル Whisper 文字起こしは、お使いのマシン上で直接 openai-whisper ライブラリを実行します。ffmpeg（音声デコード用）と openai-whisper Python パッケージの両方のインストールが必要です。API キーやネットワーク接続は不要です。インストール：uv pip install 'taskbolt[whisper]'。"
   }
 }

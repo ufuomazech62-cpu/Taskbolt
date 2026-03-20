@@ -20,7 +20,7 @@ function buildHeaders(method?: string, extra?: HeadersInit): Headers {
 
   // Add selected agent ID to all requests (for multi-agent support)
   try {
-    const agentStorage = localStorage.getItem("copaw-agent-storage");
+    const agentStorage = localStorage.getItem("taskbolt-agent-storage");
     if (agentStorage) {
       const parsed = JSON.parse(agentStorage);
       const selectedAgent = parsed?.state?.selectedAgent;

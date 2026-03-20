@@ -83,3 +83,7 @@ timeout: '1200s'
 
 # Service account for Cloud Build
 serviceAccount: 'projects/${PROJECT_ID}/serviceAccounts/taskbolt-deployer@${PROJECT_ID}.iam.gserviceaccount.com'
+
+# Logging options
+options:
+  logging: CLOUD_LOGGING_ONLY

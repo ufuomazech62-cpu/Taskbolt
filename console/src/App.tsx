@@ -133,8 +133,8 @@ function AppInner() {
       <GlobalStyle />
       <ConfigProvider
         {...bailianTheme}
-        prefix="copaw"
-        prefixCls="copaw"
+        prefix="taskbolt"
+        prefixCls="taskbolt"
         locale={antdLocale}
         theme={{
           ...(bailianTheme as any)?.theme,

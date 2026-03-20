@@ -18,10 +18,10 @@ const CONSOLE_FILES_PREFIX = "/console/files";
 
 function buildChatUploadHeaders(): HeadersInit {
   const headers: Record<string, string> = {};
-  const token = localStorage.getItem("copaw_auth_token");
+  const token = localStorage.getItem("taskbolt_auth_token");
   if (token) headers.Authorization = `Bearer ${token}`;
   try {
-    const agentStorage = localStorage.getItem("copaw-agent-storage");
+    const agentStorage = localStorage.getItem("taskbolt-agent-storage");
     if (agentStorage) {
       const parsed = JSON.parse(agentStorage);
       const selectedAgent = parsed?.state?.selectedAgent;
@@ -35,7 +35,7 @@ function buildChatUploadHeaders(): HeadersInit {
 
 function getSelectedAgentId(): string {
   try {
-    const agentStorage = localStorage.getItem("copaw-agent-storage");
+    const agentStorage = localStorage.getItem("taskbolt-agent-storage");
     if (agentStorage) {
       const parsed = JSON.parse(agentStorage);
       const id = parsed?.state?.selectedAgent;

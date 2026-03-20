@@ -20,7 +20,7 @@ import { useTheme } from "../../../../contexts/ThemeContext";
 const WECOM_SDK_URL =
   "https://wwcdn.weixin.qq.com/node/wework/js/wecom-aibot-sdk@0.1.0.min.js";
 
-const WECOM_SOURCE = "copaw";
+const WECOM_SOURCE = "taskbolt";
 
 interface WecomBotInfo {
   botid: string;
@@ -56,37 +56,37 @@ const CHANNELS_WITH_ACCESS_CONTROL: ChannelKey[] = [
   "xiaoyi",
 ];
 
-// Doc EN URLs per channel (anchors on https://copaw.agentscope.io/docs/channels)
+// Doc EN URLs per channel (anchors on https://taskbolt.agentscope.io/docs/channels)
 const CHANNEL_DOC_EN_URLS: Partial<Record<ChannelKey, string>> = {
   dingtalk:
-    "https://copaw.agentscope.io/docs/channels/?lang=en#DingTalk-recommended",
-  feishu: "https://copaw.agentscope.io/docs/channels/?lang=en#Feishu-Lark",
+    "https://taskbolt.agentscope.io/docs/channels/?lang=en#DingTalk-recommended",
+  feishu: "https://taskbolt.agentscope.io/docs/channels/?lang=en#Feishu-Lark",
   imessage:
-    "https://copaw.agentscope.io/docs/channels/?lang=en#iMessage-macOS-only",
-  discord: "https://copaw.agentscope.io/docs/channels/?lang=en#Discord",
-  qq: "https://copaw.agentscope.io/docs/channels/?lang=en#QQ",
-  telegram: "https://copaw.agentscope.io/docs/channels/?lang=en#Telegram",
-  mqtt: "https://copaw.agentscope.io/docs/channels/?lang=en#MQTT",
-  mattermost: "https://copaw.agentscope.io/docs/channels/?lang=en#Mattermost",
-  matrix: "https://copaw.agentscope.io/docs/channels/?lang=en#Matrix",
-  wecom: "https://copaw.agentscope.io/docs/channels/?lang=en#WeCom-WeChat-Work",
+    "https://taskbolt.agentscope.io/docs/channels/?lang=en#iMessage-macOS-only",
+  discord: "https://taskbolt.agentscope.io/docs/channels/?lang=en#Discord",
+  qq: "https://taskbolt.agentscope.io/docs/channels/?lang=en#QQ",
+  telegram: "https://taskbolt.agentscope.io/docs/channels/?lang=en#Telegram",
+  mqtt: "https://taskbolt.agentscope.io/docs/channels/?lang=en#MQTT",
+  mattermost: "https://taskbolt.agentscope.io/docs/channels/?lang=en#Mattermost",
+  matrix: "https://taskbolt.agentscope.io/docs/channels/?lang=en#Matrix",
+  wecom: "https://taskbolt.agentscope.io/docs/channels/?lang=en#WeCom-WeChat-Work",
   xiaoyi:
     "https://developer.huawei.com/consumer/cn/doc/service/openclaw-0000002518410344",
 };
 
-// Doc ZH URLs per channel (anchors on https://copaw.agentscope.io/docs/channels)
+// Doc ZH URLs per channel (anchors on https://taskbolt.agentscope.io/docs/channels)
 const CHANNEL_DOC_ZH_URLS: Partial<Record<ChannelKey, string>> = {
-  dingtalk: "https://copaw.agentscope.io/docs/channels/?lang=zh#钉钉推荐",
-  feishu: "https://copaw.agentscope.io/docs/channels/?lang=zh#飞书",
+  dingtalk: "https://taskbolt.agentscope.io/docs/channels/?lang=zh#钉钉推荐",
+  feishu: "https://taskbolt.agentscope.io/docs/channels/?lang=zh#飞书",
   imessage:
-    "https://copaw.agentscope.io/docs/channels/?lang=zh#iMessage仅-macOS",
-  discord: "https://copaw.agentscope.io/docs/channels/?lang=zh#Discord",
-  qq: "https://copaw.agentscope.io/docs/channels/?lang=zh#QQ",
-  telegram: "https://copaw.agentscope.io/docs/channels/?lang=zh#Telegram",
-  mqtt: "https://copaw.agentscope.io/docs/channels/?lang=zh#MQTT",
-  mattermost: "https://copaw.agentscope.io/docs/channels/?lang=zh#Mattermost",
-  matrix: "https://copaw.agentscope.io/docs/channels/?lang=zh#Matrix",
-  wecom: "https://copaw.agentscope.io/docs/channels/?lang=zh#企业微信",
+    "https://taskbolt.agentscope.io/docs/channels/?lang=zh#iMessage仅-macOS",
+  discord: "https://taskbolt.agentscope.io/docs/channels/?lang=zh#Discord",
+  qq: "https://taskbolt.agentscope.io/docs/channels/?lang=zh#QQ",
+  telegram: "https://taskbolt.agentscope.io/docs/channels/?lang=zh#Telegram",
+  mqtt: "https://taskbolt.agentscope.io/docs/channels/?lang=zh#MQTT",
+  mattermost: "https://taskbolt.agentscope.io/docs/channels/?lang=zh#Mattermost",
+  matrix: "https://taskbolt.agentscope.io/docs/channels/?lang=zh#Matrix",
+  wecom: "https://taskbolt.agentscope.io/docs/channels/?lang=zh#企业微信",
   xiaoyi:
     "https://developer.huawei.com/consumer/cn/doc/service/openclaw-0000002518410344",
 };
@@ -411,7 +411,7 @@ export function ChannelDrawer({
               <Input placeholder="Optional" />
             </Form.Item>
             <Form.Item name="media_dir" label="Media Dir">
-              <Input placeholder="~/.copaw/media" />
+              <Input placeholder="~/.taskbolt/media" />
             </Form.Item>
           </>
         );
@@ -581,7 +581,7 @@ export function ChannelDrawer({
               <Input.Password placeholder="Mattermost bot token" />
             </Form.Item>
             <Form.Item name="media_dir" label="Media Dir">
-              <Input placeholder="~/.copaw/media/mattermost" />
+              <Input placeholder="~/.taskbolt/media/mattermost" />
             </Form.Item>
             <Form.Item
               name="show_typing"
@@ -689,7 +689,7 @@ export function ChannelDrawer({
               <Input.Password placeholder="Secret from WeCom backend" />
             </Form.Item>
             <Form.Item name="media_dir" label="Media Dir">
-              <Input placeholder="~/.copaw/media" />
+              <Input placeholder="~/.taskbolt/media" />
             </Form.Item>
             <Form.Item
               name="welcome_text"
@@ -797,7 +797,7 @@ export function ChannelDrawer({
                 CHANNEL_DOC_EN_URLS[activeKey]! ||
                 CHANNEL_DOC_ZH_URLS[activeKey]!;
               const isCopawDoc = url.includes(
-                "copaw.agentscope.io/docs/channels/",
+                "taskbolt.agentscope.io/docs/channels/",
               );
               const finalUrl =
                 isCopawDoc && currentLang === "zh"

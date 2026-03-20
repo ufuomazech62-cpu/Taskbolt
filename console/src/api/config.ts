@@ -1,7 +1,7 @@
 declare const BASE_URL: string;
 declare const TOKEN: string;
 
-const AUTH_TOKEN_KEY = "copaw_auth_token";
+const AUTH_TOKEN_KEY = "taskbolt_auth_token";
 
 /**
  * Get the full API URL with /api prefix

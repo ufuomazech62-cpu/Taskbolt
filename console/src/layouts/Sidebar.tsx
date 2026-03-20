@@ -195,12 +195,12 @@ export default function Sidebar({ selectedKey }: SidebarProps) {
       ? "ru"
       : "en";
     const faqLang = lang === "zh" ? "zh" : "en";
-    const url = `https://copaw.agentscope.io/docs/faq.${faqLang}.md`;
+    const url = `https://taskbolt.agentscope.io/docs/faq.${faqLang}.md`;
     fetch(url, { cache: "no-cache" })
       .then((res) => (res.ok ? res.text() : Promise.reject()))
       .then((text) => {
-        const zhPattern = /###\s*CoPaw如何更新[\s\S]*?(?=\n###|$)/;
-        const enPattern = /###\s*How to update CoPaw[\s\S]*?(?=\n###|$)/;
+        const zhPattern = /###\s*Taskbolt如何更新[\s\S]*?(?=\n###|$)/;
+        const enPattern = /###\s*How to update Taskbolt[\s\S]*?(?=\n###|$)/;
         const match = text.match(faqLang === "zh" ? zhPattern : enPattern);
         setUpdateMarkdown(
           match && lang !== "ru"
@@ -320,7 +320,7 @@ export default function Sidebar({ selectedKey }: SidebarProps) {
                   ? `${import.meta.env.BASE_URL}dark-logo.png`
                   : `${import.meta.env.BASE_URL}logo.png`
               }
-              alt="CoPaw"
+              alt="Taskbolt"
               className={styles.logoImg}
             />
             {version && (
@@ -404,7 +404,7 @@ export default function Sidebar({ selectedKey }: SidebarProps) {
             onClick={() => {
               const websiteLang = i18n.language?.startsWith("zh") ? "zh" : "en";
               window.open(
-                `https://copaw.agentscope.io/release-notes?lang=${websiteLang}`,
+                `https://taskbolt.agentscope.io/release-notes?lang=${websiteLang}`,
                 "_blank",
               );
             }}

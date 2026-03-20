@@ -597,7 +597,7 @@ export default function ChatPage() {
       const token = getApiToken();
       if (token) headers.Authorization = `Bearer ${token}`;
       try {
-        const agentStorage = localStorage.getItem("copaw-agent-storage");
+        const agentStorage = localStorage.getItem("taskbolt-agent-storage");
         if (agentStorage) {
           const parsed = JSON.parse(agentStorage);
           const selectedAgent = parsed?.state?.selectedAgent;
@@ -758,8 +758,8 @@ export default function ChatPage() {
       welcome: {
         ...i18nConfig.welcome,
         avatar: isDark
-          ? `${import.meta.env.BASE_URL}copaw-dark.png`
-          : `${import.meta.env.BASE_URL}copaw-symbol.svg`,
+          ? `${import.meta.env.BASE_URL}taskbolt-dark.png`
+          : `${import.meta.env.BASE_URL}taskbolt-symbol.svg`,
       },
       sender: {
         ...(i18nConfig as any)?.sender,

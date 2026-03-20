@@ -40,7 +40,7 @@ export const useAgentStore = create<AgentStore>()(
         })),
     }),
     {
-      name: "copaw-agent-storage",
+      name: "taskbolt-agent-storage",
     },
   ),
 );
