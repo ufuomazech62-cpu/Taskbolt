@@ -385,5 +385,9 @@ if os.path.isdir(_CONSOLE_STATIC_DIR):
 
     @app.get("/{full_path:path}")
     def _console_spa(full_path: str):
+        # Don't serve console for API routes - return 404 so router can handle
+        if full_path.startswith("api/") or full_path.startswith("voice/"):
+            from fastapi.responses import JSONResponse
+            return JSONResponse(status_code=404, content={"detail": "Not found"})
         _ = full_path
         return _serve_console_index()
