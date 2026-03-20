@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Create a temporary conda env, install CoPaw from a wheel, run conda-pack.
+Create a temporary conda env, install Taskbolt from a wheel, run conda-pack.
 Used by build_macos.sh and build_win.ps1. Run from repo root.
 """
 from __future__ import annotations
@@ -15,7 +15,7 @@ import sys
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
-ENV_PREFIX = "copaw_pack_"
+ENV_PREFIX = "taskbolt_pack_"
 
 # Packages affected by conda-unpack bug on Windows (conda-pack Issue #154)
 # conda-unpack modifies Python source files to replace path prefixes, but uses
@@ -51,7 +51,7 @@ def _pick_wheel(wheel_arg: str | None) -> Path:
         return wheel_path
 
     wheels = sorted(
-        (REPO_ROOT / "dist").glob("copaw-*.whl"),
+        (REPO_ROOT / "dist").glob("taskbolt-*.whl"),
         key=lambda p: p.stat().st_mtime,
         reverse=True,
     )
@@ -64,7 +64,7 @@ def _pick_wheel(wheel_arg: str | None) -> Path:
 
 def main() -> int:
     parser = argparse.ArgumentParser(
-        description="Conda-pack CoPaw (temp env).",
+        description="Conda-pack Taskbolt (temp env).",
     )
     parser.add_argument(
         "--output",
@@ -89,7 +89,7 @@ def main() -> int:
         default=None,
         help=(
             "Wheel path to install. If omitted, pick the newest "
-            "dist/copaw-*.whl."
+            "dist/taskbolt-*.whl."
         ),
     )
     parser.add_argument(
@@ -146,7 +146,7 @@ def main() -> int:
                 "-m",
                 "pip",
                 "install",
-                f"copaw[full] @ {wheel_uri}",
+                f"taskbolt[full] @ {wheel_uri}",
             ],
         )
         print("Verifying certifi is installed (required for SSL)...")
