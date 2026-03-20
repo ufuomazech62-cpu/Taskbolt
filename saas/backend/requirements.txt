@@ -1,0 +1,9 @@
+# Taskbolt License Backend Dependencies
+fastapi>=0.104.0
+uvicorn>=0.24.0
+pydantic>=2.0.0
+pydantic[email]>=2.0.0
+firebase-admin>=6.3.0
+google-cloud-firestore>=2.14.0
+stripe>=7.0.0
+httpx>=0.25.0
