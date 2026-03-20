@@ -1,0 +1,17 @@
+# Firebase App Hosting configuration for Taskbolt Console
+# This configures how Firebase builds and deploys the Vite React frontend
+
+# Build configuration
+runCommand: npm run preview -- --host 0.0.0.0 --port $PORT
+
+# Environment variables to pass to the build
+env:
+  - variable: NODE_ENV
+    value: production
+  - variable: VITE_API_URL
+    value: https://taskbolt-914569329883.us-central1.run.app
+
+# Build steps
+build:
+  - npm ci --include=dev
+  - npm run build
