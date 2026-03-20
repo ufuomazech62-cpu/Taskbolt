@@ -369,3 +369,92 @@ async def check_license_status(request: Request):
         "status": "ok",
         "message": "License check endpoint",
     }
+
+
+# --- Gumroad Webhook ---
+
+@router.post("/webhook/gumroad")
+async def gumroad_webhook(request: Request):
+    """Handle Gumroad webhook for license generation.
+    
+    Called when:
+    - A purchase is completed
+    - A subscription is created/updated/cancelled
+    - A refund is issued
+    """
+    import os
+    
+    try:
+        form_data = await request.form()
+        event_type = form_data.get("event", "unknown")
+        
+        logger.info(f"Gumroad webhook received: {event_type}")
+        
+        if event_type == "purchase":
+            # Extract purchase details
+            email = form_data.get("email", "")
+            product_id = form_data.get("product_id", "")
+            product_name = form_data.get("product_name", "")
+            sale_id = form_data.get("sale_id", "")
+            price = float(form_data.get("price", 0)) / 100  # Convert from cents
+            
+            # Determine plan based on product
+            plan = "basic"
+            if "premium" in product_name.lower() or "pro" in product_name.lower():
+                plan = "premium"
+            
+            # Generate license key
+            chars = string.ascii_uppercase + string.digits
+            license_key = "TB" + "".join(secrets.choice(chars) for _ in range(14))
+            license_key = f"{license_key[:2]}-{license_key[2:7]}-{license_key[7:12]}-{license_key[12:]}"
+            
+            # Create license in Firestore
+            license_data = {
+                "license_key": license_key,
+                "email": email,
+                "plan": plan,
+                "status": "pending",
+                "device_id": None,
+                "activated_at": None,
+                "expires_at": None,
+                "ai_credits": 100 if plan == "basic" else 1000,
+                "ai_credits_used": 0,
+                "features": ["desktop_app", "local_models"] if plan == "basic" 
+                    else ["desktop_app", "local_models", "cloud_ai", "priority_support"],
+                "created_at": datetime.utcnow().isoformat(),
+                "source": "gumroad",
+                "gumroad_sale_id": sale_id,
+                "gumroad_product_id": product_id,
+            }
+            
+            if _create_license_in_firestore(license_key, license_data):
+                logger.info(f"License created for Gumroad purchase: {license_key} ({email})")
+                return {
+                    "success": True,
+                    "message": "License created",
+                    "license_key": license_key,
+                }
+            else:
+                logger.error(f"Failed to create license for Gumroad purchase: {sale_id}")
+                return {"success": False, "message": "Failed to create license"}
+        
+        elif event_type == "refund":
+            sale_id = form_data.get("sale_id", "")
+            logger.info(f"Refund received for sale: {sale_id}")
+            return {"success": True, "message": "Refund processed"}
+        
+        elif event_type == "subscription_updated":
+            logger.info("Subscription updated")
+            return {"success": True, "message": "Subscription updated"}
+        
+        elif event_type == "subscription_cancelled":
+            logger.info("Subscription cancelled")
+            return {"success": True, "message": "Subscription cancelled"}
+        
+        else:
+            logger.info(f"Unhandled Gumroad event: {event_type}")
+            return {"success": True, "message": f"Event {event_type} received"}
+    
+    except Exception as e:
+        logger.error(f"Gumroad webhook error: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail=str(e))
